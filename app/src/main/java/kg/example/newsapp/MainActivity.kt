@@ -1,8 +1,11 @@
 package kg.example.newsapp
 
 import android.os.Bundle
+import android.view.View
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
+import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -31,5 +34,29 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        navController.navigate(R.id.boardFragment)
+
+        navController.addOnDestinationChangedListener{ navController:NavController, navDestination: NavDestination, bundle: Bundle?->
+            val fragments= arrayListOf(
+                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications, R.id.navigation_profile)
+
+            if (fragments.contains(navDestination.id)) {
+                binding.navView.visibility = View.VISIBLE
+            } else{
+                binding.navView.visibility=View.GONE
+            }
+
+            if (navDestination.id==R.id.boardFragment) {
+                supportActionBar?.hide()
+            } else {
+                supportActionBar?.show()
+            }
+            }
+        }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
     }
-}
+    }
+

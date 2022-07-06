@@ -34,5 +34,10 @@
         android:name="kg.example.newsapp.ui.NewsFragment"
         android:label="fragment_news"
         tools:layout="@layout/fragment_news" />
+    <fragment
+        android:id="@+id/boardFragment"
+        android:name="kg.example.newsapp.ui.board.BoardFragment"
+        android:label="fragment_board"
+        tools:layout="@layout/fragment_board" />
 
 </navigation>

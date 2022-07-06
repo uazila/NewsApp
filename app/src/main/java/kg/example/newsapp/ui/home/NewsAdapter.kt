@@ -29,7 +29,7 @@ class NewsAdapter(private val onClick: (position: Int) -> Unit) :
         holder.itemView.setOnClickListener {
             onClick(position)
         }
-        if (position% 2 ==0){
+        if (position % 2 == 0){
             holder.itemView.setBackgroundColor(Color.WHITE)
         }else{
             holder.itemView.setBackgroundColor(Color.GRAY)
