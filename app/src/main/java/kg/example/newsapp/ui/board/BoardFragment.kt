@@ -8,6 +8,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import kg.example.newsapp.databinding.FragmentBoardBinding
+import kg.example.newsapp.ui.notifications.Prefs
 
 
 class BoardFragment : Fragment() {
@@ -24,7 +25,7 @@ class BoardFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val adapter = BoardAdapter {
-            findNavController().navigateUp()
+            close()
         }
         binding.viewPager.adapter = adapter
         binding.dotsIndicator.setViewPager2(binding.viewPager)
@@ -35,6 +36,10 @@ class BoardFragment : Fragment() {
                     requireActivity().finish()
                 }
             })
+    }
+    fun close(){
+        Prefs(requireContext()).saveState()
+        findNavController().navigateUp()
     }
 }
 
