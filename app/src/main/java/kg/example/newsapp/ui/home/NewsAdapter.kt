@@ -9,10 +9,13 @@ import kg.models.News
 import java.text.SimpleDateFormat
 import java.util.*
 
-class NewsAdapter(private val onClick: (position: Int) -> Unit) :
+class NewsAdapter(
+    private val onClick: (position: Int) -> Unit,
+    private val onLongClickItem: (news: News) -> Unit
+) :
     RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
 
-    private val list = arrayListOf<News>()
+    private var list = arrayListOf<News>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -29,9 +32,9 @@ class NewsAdapter(private val onClick: (position: Int) -> Unit) :
         holder.itemView.setOnClickListener {
             onClick(position)
         }
-        if (position % 2 == 0){
+        if (position % 2 == 0) {
             holder.itemView.setBackgroundColor(Color.WHITE)
-        }else{
+        } else {
             holder.itemView.setBackgroundColor(Color.GRAY)
         }
     }
@@ -54,11 +57,20 @@ class NewsAdapter(private val onClick: (position: Int) -> Unit) :
         notifyDataSetChanged()
     }
 
+    fun deleteItem(news: News) {
+        list.remove(news)
+        notifyDataSetChanged()
+    }
+
     inner class ViewHolder(private var binding: ItemNewsBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(news: News) {
             binding.textTitle.text = news.title
             binding.textData.text = getDate(news.createdAt, "dd/MM/yyyy hh:mm:ss.SSS")
+            itemView.setOnLongClickListener {
+                onLongClickItem(news)
+                true
+            }
         }
     }
 
@@ -67,6 +79,11 @@ class NewsAdapter(private val onClick: (position: Int) -> Unit) :
         val calendar: Calendar = Calendar.getInstance()
         calendar.timeInMillis = milliSeconds
         return formatter.format(calendar.time)
+    }
+
+    fun addItems(list: List<News>) {
+        this.list = list as ArrayList<News>
+        notifyDataSetChanged()
     }
 
 }
