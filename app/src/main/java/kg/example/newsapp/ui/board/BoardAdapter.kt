@@ -12,8 +12,7 @@ import kg.example.newsapp.ui.home.NewsAdapter
 class BoardAdapter(private val onClickStart: ()->Unit):RecyclerView.Adapter<BoardAdapter.ViewHolder>() {
 
     private val titles = arrayListOf("Cалам", "Привет", "Hello")
-    private val images= arrayListOf(R.drawable.img,
-    R.drawable.img_1, R.drawable.img_2)
+    private val images= arrayListOf(R.raw.lotii,R.raw.lotii,R.raw.lotii)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -34,6 +33,7 @@ class BoardAdapter(private val onClickStart: ()->Unit):RecyclerView.Adapter<Boar
     inner class ViewHolder(private var binding: PagerBoardBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(position: Int) {
+            binding.imageView.setAnimation(images[position])
             binding.textTitle.text = titles[position]
             if (position==titles.size-1){
                 binding.btnStart.visibility=View.VISIBLE

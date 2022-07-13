@@ -42,7 +42,7 @@ class ProfileFragment : Fragment() {
 
     private val getContent =
         registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-            Glide.with(binding.imageProfile).load(uri).centerCrop().into(binding.imageProfile)
+            Glide.with(binding.imageProfile).load(uri).centerCrop().circleCrop().into(binding.imageProfile)
         }
 
     private fun savingName() {

@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-        if (!Prefs(this).isShow()) {
+            if (!Prefs(this).isShow()) {
             navController.navigate(R.id.boardFragment)
         }
         navController.addOnDestinationChangedListener{ navController:NavController, navDestination: NavDestination, bundle: Bundle?->

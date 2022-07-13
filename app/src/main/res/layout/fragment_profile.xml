@@ -4,9 +4,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ProfileFragment">
+    tools:context=".ProfileFragment"
+    android:background="@color/teal_200">
 
     <!-- TODO: Update blank fragment layout -->
+
+    <EditText
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
     <ImageView
         android:id="@+id/image_profile"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -16,16 +25,46 @@
         android:src="@drawable/ic_image"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:text="profile" />
-
-       <EditText
-           app:layout_constraintStart_toStartOf="parent"
-           app:layout_constraintEnd_toEndOf="parent"
-           android:layout_marginTop="12dp"
-           android:id="@+id/editText"
-           app:layout_constraintTop_toTopOf="parent"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
+        android:text="profile"
         />
+
+
+    <ImageView
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/image111"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="92dp"
+        android:src="@drawable/images111" />
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="261dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="460dp"
+        android:text="Фотография"
+        android:textSize="32dp"
+        android:textStyle="bold"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:textColor="@color/orange"
+        android:id="@+id/text2"
+        android:layout_width="245dp"
+        android:layout_height="97dp"
+        android:layout_marginTop="516dp"
+        android:gravity="center"
+        android:text="Здесь вы можете посмотреть мои фото"
+        android:textSize="24sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.548"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
