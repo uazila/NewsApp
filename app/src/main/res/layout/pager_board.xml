@@ -13,7 +13,7 @@
         app:lottie_autoPlay="true"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:src="@drawable/ic_andr"/>
+        app:lottie_rawRes="@raw/charecter"/>
 
 
     <TextView

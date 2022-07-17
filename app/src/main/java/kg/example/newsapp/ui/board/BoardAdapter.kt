@@ -1,18 +1,17 @@
 package kg.example.newsapp.ui.board
 
-import android.content.DialogInterface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kg.example.newsapp.R
 import kg.example.newsapp.databinding.PagerBoardBinding
-import kg.example.newsapp.ui.home.NewsAdapter
 
-class BoardAdapter(private val onClickStart: ()->Unit):RecyclerView.Adapter<BoardAdapter.ViewHolder>() {
+class BoardAdapter(private val onClickStart: () -> Unit) :
+    RecyclerView.Adapter<BoardAdapter.ViewHolder>() {
 
     private val titles = arrayListOf("Cалам", "Привет", "Hello")
-    private val images= arrayListOf(R.raw.lotii,R.raw.lotii,R.raw.lotii)
+    private val lottieAnimationView = arrayListOf(R.raw.charecter, R.raw.music, R.raw.happypencil)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -33,18 +32,16 @@ class BoardAdapter(private val onClickStart: ()->Unit):RecyclerView.Adapter<Boar
     inner class ViewHolder(private var binding: PagerBoardBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(position: Int) {
-            binding.imageView.setAnimation(images[position])
+            binding.imageView.setAnimation(lottieAnimationView[position])
             binding.textTitle.text = titles[position]
-            if (position==titles.size-1){
-                binding.btnStart.visibility=View.VISIBLE
-            }else{
-                binding.btnStart.visibility=View.INVISIBLE
+            if (position == titles.size - 1) {
+                binding.btnStart.visibility = View.VISIBLE
+            } else {
+                binding.btnStart.visibility = View.INVISIBLE
             }
-            binding.btnStart.setOnClickListener{
+            binding.btnStart.setOnClickListener {
                 onClickStart()
             }
-            binding.imageView.setImageResource(images[position])
-
         }
     }
-    }
+}
